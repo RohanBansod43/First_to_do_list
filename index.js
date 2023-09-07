@@ -4,15 +4,16 @@ const todoList = document.querySelector(".to-do-list");
 
 addButton.addEventListener("click", () => {
   const listValue = inputField.value;
+  if (listValue === "") {
+    inputField.innerHTML = "Enter something";
+  } else {
+    const listElement = document.createElement("li");
 
-  const listElement = document.createElement("li");
+    listElement.textContent = listValue;
 
-  listElement.textContent = listValue;
-  if ((listValue = " ")) {
-    return;
+    todoList.appendChild(listElement);
+    inputField.value = "";
   }
-  todoList.appendChild(listElement);
-  inputField.value = " ";
 });
 todoList.addEventListener("click", (e) => {
   if (e.target.tagName === "LI") {
